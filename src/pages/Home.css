@@ -1,0 +1,38 @@
+.banner{
+    width: auto;
+    height: 100vh;
+    position: relative;
+    background-image:url(https://occ-0-876-420.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABTx6A12RFZwr4sJ3s6OQp665pQpl2ePAU0xsPgj0cyx46Qu5Pr6qW9S-X0FmiUX249WiXDDEohQXIGH4ExT1ist--di-_Lllow.jpg?r=776);
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center top
+    linear-gradient(to top, #181818 0, rgba(24, 24, 24, 0) 100%);
+}
+
+.banner .banner_home{
+    overflow: hidden;
+}
+
+.container{
+    margin-top: 10vh;
+    max-width: 980px;
+}
+
+.banner .banner_home .text{
+    max-width: 980px;
+}
+
+.banner .banner_home .text h2{
+    font-weight: 900;
+    font-size: 72px;
+    line-height: 1;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.banner .banner_home .text p{
+    font-size: 18px;
+    line-height: 1.39;
+    color: #ffffff;
+    max-width: 434px;
+}
