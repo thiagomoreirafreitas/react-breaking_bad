@@ -22,11 +22,10 @@ function Characters() {
     useEffect(() => {
         async function loadCharacters(limit, offset) {
             const response = await api.get(`characters?limit=${limit}&offset=${offset}`)
+            console.log(response.data);
             setCharacters(characters.concat(response.data));
-            if (characters.length > 0) {
-                setPage(page + 1);
-                setOffset(page * limit);
-            }
+            setPage(page + 1);
+            setOffset(page * limit);
             setStart(1);
         }
         loadCharacters(limit, offset);
@@ -78,14 +77,14 @@ function Characters() {
 
     return (
         <div className="characters">
-            <h2>Personagens</h2>
+            <h5>Personagens</h5>
             <div className="main-container">
                 {currentCharacters.length > 0 ? (
                     <ViewCharacters characters={currentCharacters} />
-                ) : offset === 0 && start === 1 ? (
+                ) : characters.length===0 && start === 1 ? (
                     <div className="empty">
-                        <h2>Nenhum Personagem :(</h2>
-                        <h2>Atualize a página</h2>
+                        <h5>Nenhum Personagem :(</h5>
+                        <h5>Atualize a página</h5>
                     </div>
                 ) : (<SkeletonCharacters tam={8} />)
                     /* <div className="empty">

@@ -1,22 +1,16 @@
 body{
-    background-image:url(../assets/back_bb.png);
-    background-repeat: no-repeat;
+    position: relative;
+    background-image: url(../assets/charactersbb.png);
     background-size:cover;
-    -webkit-background-size: cover; /* SAFARI / CHROME */
-    -moz-background-size: cover; /* FIREFOX */
-    -ms-background-size: cover; /* IE */
-    -o-background-size: cover; /* OPERA */
-    height: 100%;
-    width: 100%;
-}
-.characters{
-    margin-top: 30px;
-text-align: center;
+    background-repeat:no-repeat;
+
 }
 
-.characters h2{
+.characters h5{
+    text-align: center;
+    padding-top: 30px;
     font-weight: 900;
-    font-size: 72px;
+    font-size: 48px;
     line-height: 1;
     color: #ffffff;
 }

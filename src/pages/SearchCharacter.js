@@ -54,12 +54,12 @@ function SearchCharacter({ match }) {
     return (
         <div className="main-container">
             <div className="characters">
-                {match.params.searchName !== '' && (<h2>Você pesquisou pelo nome {match.params.searchName}</h2>)}
+                {match.params.searchName !== '' && (<h5>Você pesquisou pelo nome {match.params.searchName}</h5>)}
                 {currentCharacters.length > 0 ? (
                     <ViewCharacters characters={currentCharacters} />
                 ) : start === 1 ? (
                     <div className="empty">
-                        <h2>Nenhum Personagem :(</h2>
+                        <h5>Nenhum personagem com o nome {match.params.searchName} :(</h5>
                     </div>
                 ) : (<SkeletonCharacters tam={8} />)
                 }
