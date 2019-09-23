@@ -12,7 +12,7 @@ function PaginationCharacters({
     next }) {
 
     return (
-            <Pagination size="lg">
+            <Pagination>
                 {(active - 1) >= pageNumbers[0] && <Pagination.Prev onClick={() => prev(active - 1)} />}
                 {
                     pageNumbers.map(number => (

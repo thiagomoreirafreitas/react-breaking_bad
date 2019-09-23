@@ -11,13 +11,37 @@ function SearchCharacter({ match }) {
     const [characters, setCharacters] = useState([]);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [charactersPerPage] = useState(8);
+    const [charactersPerPage] = useState(2);
 
     const [active, setActive] = useState(1);
 
     const [start, setStart] = useState(0);
+    const [matchSearch, setMatchSearch] = useState(0);
+
+    let auxSearch = [];
 
     useEffect(() => {
+        async function handleSearch() {
+            const responseSearch = await api.get('characters')
+            for (let i = 0; i < responseSearch.data.length; i++) {
+                if ((responseSearch.data[i].name.toLowerCase()).startsWith((match.params.searchName.toLowerCase())))
+                    auxSearch.push(responseSearch.data[i]);
+            }
+            setCharacters(auxSearch);
+            if (auxSearch.length > 0) {
+                setCurrentPage(1);
+                setActive(1);
+                setStart(1);
+                setMatchSearch(1);
+            }
+            else
+                setMatchSearch(0);
+        }
+        handleSearch();
+
+    }, [match.params.searchName]);
+
+    /* useEffect(() => {
         async function handleSearch() {
             const responseSearch = await api.get(`/characters?name=${match.params.searchName}`);
             setCharacters(responseSearch.data);
@@ -25,7 +49,7 @@ function SearchCharacter({ match }) {
             setStart(1);
         }
         handleSearch();
-    }, [match.params.searchName]);
+    }, [match.params.searchName]); */
 
     const indexOfLastCharacter = currentPage * charactersPerPage;
     const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage;
@@ -57,11 +81,15 @@ function SearchCharacter({ match }) {
                 {match.params.searchName !== '' && (<h5>Você pesquisou pelo nome {match.params.searchName}</h5>)}
                 {currentCharacters.length > 0 ? (
                     <ViewCharacters characters={currentCharacters} />
-                ) : start === 1 ? (
-                    <div className="empty">
-                        <h5>Nenhum personagem com o nome {match.params.searchName} :(</h5>
-                    </div>
-                ) : (<SkeletonCharacters tam={8} />)
+                ) : start === 0 ? (<SkeletonCharacters tam={charactersPerPage} />) :
+                        start === 1 && matchSearch === 1 ?
+                            (<div className="empty">
+                                <h5>Acabaram os Personagens :(</h5>
+                            </div>) : (
+                                <div className="empty">
+                                    <h5>Nenhum personagem com o nome {match.params.searchName} :(</h5>
+                                </div>
+                            )
                 }
             </div>
             <PaginationCharacters

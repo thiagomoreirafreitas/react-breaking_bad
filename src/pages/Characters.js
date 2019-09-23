@@ -10,13 +10,14 @@ function Characters() {
     const [characters, setCharacters] = useState([]);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [charactersPerPage] = useState(8);
+    const [charactersPerPage] = useState(9);
 
     const [active, setActive] = useState(1);
-    const [limit] = useState(40);
+    const [limit] = useState(45);
     const [page, setPage] = useState(1);
     const [offset, setOffset] = useState(0);
     const [start, setStart] = useState(0);
+    const [fim, setFim] = useState(0);
 
     //Obtém registros com limit e offset
     useEffect(() => {
@@ -72,34 +73,39 @@ function Characters() {
         setPage(page + 1);
         setOffset(page * limit);
         const response = await api.get(`characters?limit=${limit}&offset=${offset}`)
-        setCharacters(characters.concat(response.data));
+        if (response.data.length === 0)
+            setFim(1);
+        else
+            setCharacters(characters.concat(response.data));
     }
 
     return (
-        <div className="characters">
-            <h5>Personagens</h5>
-            <div className="main-container">
-                {currentCharacters.length > 0 ? (
-                    <ViewCharacters characters={currentCharacters} />
-                ) : characters.length===0 && start === 1 ? (
-                    <div className="empty">
-                        <h5>Nenhum Personagem :(</h5>
-                        <h5>Atualize a página</h5>
-                    </div>
-                ) : (<SkeletonCharacters tam={8} />)
-                    /* <div className="empty">
-                    Acabaram os Personagens :(
-                    </div> */
-                }
-                <PaginationCharacters
-                    pageNumbers={pageNumbers}
-                    currentCharacters={currentCharacters}
-                    active={active}
-                    paginate={paginate}
-                    prev={prev}
-                    next={next} />
-            </div>
+
+        <div className="main-container">
+            {currentCharacters.length > 0 ? (
+                <ViewCharacters characters={currentCharacters} />
+            ) : characters.length === 0 && start === 1 ? (
+                <div className="empty">
+                    <h5>Nenhum Personagem :(</h5>
+                    <h5>Atualize a página</h5>
+                </div>
+            ) : fim === 0 ? (<SkeletonCharacters tam={charactersPerPage} />) :
+                        (<div className="empty">
+                            <h5>Acabaram os Personagens :(</h5>
+                        </div>)
+                /* <div className="empty">
+                Acabaram os Personagens :(
+                </div> */
+            }
+            <PaginationCharacters
+                pageNumbers={pageNumbers}
+                currentCharacters={currentCharacters}
+                active={active}
+                paginate={paginate}
+                prev={prev}
+                next={next} />
         </div>
+
     );
 }
 export default Characters;
