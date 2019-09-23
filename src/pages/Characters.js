@@ -23,8 +23,10 @@ function Characters() {
         async function loadCharacters(limit, offset) {
             const response = await api.get(`characters?limit=${limit}&offset=${offset}`)
             setCharacters(characters.concat(response.data));
-            setPage(page + 1);
-            setOffset(page * limit);
+            if (characters.length > 0) {
+                setPage(page + 1);
+                setOffset(page * limit);
+            }
             setStart(1);
         }
         loadCharacters(limit, offset);
@@ -76,14 +78,15 @@ function Characters() {
 
     return (
         <div className="characters">
-             <h2>Personagens</h2>
+            <h2>Personagens</h2>
             <div className="main-container">
                 {currentCharacters.length > 0 ? (
                     <ViewCharacters characters={currentCharacters} />
                 ) : offset === 0 && start === 1 ? (
                     <div className="empty">
-                        Nenhum Personagem :(
-                        </div>
+                        <h2>Nenhum Personagem :(</h2>
+                        <h2>Atualize a página</h2>
+                    </div>
                 ) : (<SkeletonCharacters tam={8} />)
                     /* <div className="empty">
                     Acabaram os Personagens :(
