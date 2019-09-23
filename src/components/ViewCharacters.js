@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Badge } from 'react-bootstrap';
-import { MdStarBorder } from 'react-icons/md';
 
 import './ViewCharacters.css';
 

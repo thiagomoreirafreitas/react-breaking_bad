@@ -8,7 +8,7 @@ function SkeletonCharacters({ tam }) {
     let children = [];
     for (let i = 0; i < tam; i++) {
         children.push(
-            <li key={i} >
+            <li key={i.toString()} >
                 <div className="card-img">
                     <Skeleton count={1} height={300} />
                 </div>
