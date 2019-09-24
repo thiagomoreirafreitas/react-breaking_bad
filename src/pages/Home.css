@@ -1,11 +1,22 @@
 .banner{
-    width: auto;
-    height: 100vh;
+    width: 100%;
     position: relative;
+    background-position-x: 50%;
     background-image:linear-gradient(to top, #000 0%, transparent 58%), url(../assets/homebb.png);
     background-size:cover;
     background-repeat:no-repeat;
 
+}
+@media (min-width: 768px) {
+    .banner{
+        width: auto;
+        height: 100vh;
+        position: relative;
+        background-image:linear-gradient(to top, #000 0%, transparent 58%), url(../assets/homebb.png);
+        background-size:cover;
+        background-repeat:no-repeat;
+    
+    }
 }
 
 .banner .banner_home{

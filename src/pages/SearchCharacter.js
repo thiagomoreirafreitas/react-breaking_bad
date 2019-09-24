@@ -76,30 +76,33 @@ function SearchCharacter({ match }) {
     }
 
     return (
-        <div className="main-container">
-            <div className="characters">
-                {match.params.searchName !== '' && (<h5>Você pesquisou pelo nome {match.params.searchName}</h5>)}
-                {currentCharacters.length > 0 ? (
-                    <ViewCharacters characters={currentCharacters} />
-                ) : start === 0 ? (<SkeletonCharacters tam={charactersPerPage} />) :
-                        start === 1 && matchSearch === 1 ?
-                            (<div className="empty">
-                                <h5>Acabaram os Personagens :(</h5>
-                            </div>) : (
-                                <div className="empty">
-                                    <h5>Nenhum personagem com o nome {match.params.searchName} :(</h5>
-                                </div>
-                            )
-                }
+        <section>
+            <div className="banner-characters">
+                <div className="main-container">
+                    {match.params.searchName !== '' && (<h3>Você pesquisou pelo nome {match.params.searchName}</h3>)}
+                    {currentCharacters.length > 0 ? (
+                        <ViewCharacters characters={currentCharacters} />
+                    ) : start === 0 ? (<SkeletonCharacters tam={charactersPerPage} />) :
+                            start === 1 && matchSearch === 1 ?
+                                (<div className="empty">
+                                    <h3>Acabaram os Personagens :(</h3>
+                                </div>) : (
+                                    <div className="empty">
+                                        <h3>Nenhum personagem com o nome {match.params.searchName} :(</h3>
+                                    </div>
+                                )
+                    }
+                </div>
+                <PaginationCharacters
+                    pageNumbers={pageNumbers}
+                    currentCharacters={currentCharacters}
+                    active={active}
+                    paginate={paginate}
+                    prev={prev}
+                    next={next} />
             </div>
-            <PaginationCharacters
-                pageNumbers={pageNumbers}
-                currentCharacters={currentCharacters}
-                active={active}
-                paginate={paginate}
-                prev={prev}
-                next={next} />
-        </div>
+        </section>
+
     );
 }
 export default SearchCharacter;

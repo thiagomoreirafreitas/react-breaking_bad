@@ -10,10 +10,10 @@ function Characters() {
     const [characters, setCharacters] = useState([]);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [charactersPerPage] = useState(9);
+    const [charactersPerPage] = useState(6);
 
     const [active, setActive] = useState(1);
-    const [limit] = useState(45);
+    const [limit] = useState(30);
     const [page, setPage] = useState(1);
     const [offset, setOffset] = useState(0);
     const [start, setStart] = useState(0);
@@ -80,32 +80,35 @@ function Characters() {
     }
 
     return (
-
-        <div className="main-container">
-            {currentCharacters.length > 0 ? (
-                <ViewCharacters characters={currentCharacters} />
-            ) : characters.length === 0 && start === 1 ? (
-                <div className="empty">
-                    <h5>Nenhum Personagem :(</h5>
-                    <h5>Atualize a página</h5>
+        <section>
+            <div className="banner-characters">
+                <div className="main-container">
+                    <h3>Personagens</h3>
+                    {currentCharacters.length > 0 ? (
+                        <ViewCharacters characters={currentCharacters} />
+                    ) : characters.length === 0 && start === 1 ? (
+                        <div className="empty">
+                            <h3>Nenhum Personagem :(</h3>
+                            <h3>Atualize a página</h3>
+                        </div>
+                    ) : fim === 0 ? (<SkeletonCharacters tam={charactersPerPage} />) :
+                                (<div className="empty">
+                                    <h3>Acabaram os Personagens :(</h3>
+                                </div>)
+                        /* <div className="empty">
+                        Acabaram os Personagens :(
+                        </div> */
+                    }
                 </div>
-            ) : fim === 0 ? (<SkeletonCharacters tam={charactersPerPage} />) :
-                        (<div className="empty">
-                            <h5>Acabaram os Personagens :(</h5>
-                        </div>)
-                /* <div className="empty">
-                Acabaram os Personagens :(
-                </div> */
-            }
-            <PaginationCharacters
-                pageNumbers={pageNumbers}
-                currentCharacters={currentCharacters}
-                active={active}
-                paginate={paginate}
-                prev={prev}
-                next={next} />
-        </div>
-
+                <PaginationCharacters
+                    pageNumbers={pageNumbers}
+                    currentCharacters={currentCharacters}
+                    active={active}
+                    paginate={paginate}
+                    prev={prev}
+                    next={next} />
+            </div>
+        </section>
     );
 }
 export default Characters;

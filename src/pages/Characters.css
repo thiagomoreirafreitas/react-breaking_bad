@@ -1,16 +1,27 @@
-body{
+.banner-characters{
+    width: 100%;
     position: relative;
-    background-image: url(../assets/charactersbb.png);
+    background-position-x: 50%;
+    background-image:linear-gradient(to top, #000 0%, transparent 58%), url(../assets/charactersbb.png);
     background-size:cover;
     background-repeat:no-repeat;
 
 }
+@media (min-width: 768px) {
+    .banner-characters{
+        width: auto;
+        /* height: 100vh; */
+        position: relative;
+        background-image:linear-gradient(to top, #000 0%, transparent 58%), url(../assets/charactersbb.png);
+        background-size:cover;
+        background-repeat:no-repeat;
+    
+    }
+}
 
-.characters h5{
+h3{
     text-align: center;
-    padding-top: 30px;
     font-weight: 900;
-    font-size: 48px;
     line-height: 1;
     color: #ffffff;
 }
