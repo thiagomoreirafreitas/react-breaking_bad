@@ -6,7 +6,7 @@
 }
 
 body{
-    background-color: #000 !important;
+    background-color: transparent !important;
     font: 14px Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased !important;
 }

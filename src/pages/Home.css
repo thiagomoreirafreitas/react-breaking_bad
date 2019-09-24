@@ -1,12 +1,22 @@
 .banner{
-    width: auto;
-    height: 100vh;
+    width: 100%;
     position: relative;
-    background-image:url(https://occ-0-876-420.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABTx6A12RFZwr4sJ3s6OQp665pQpl2ePAU0xsPgj0cyx46Qu5Pr6qW9S-X0FmiUX249WiXDDEohQXIGH4ExT1ist--di-_Lllow.jpg?r=776);
+    background-position-x: 50%;
+    background-image:linear-gradient(to top, #000 0%, transparent 58%), url(../assets/homebb.png);
     background-size:cover;
     background-repeat:no-repeat;
-    background-position:center top
-    linear-gradient(to top, #181818 0, rgba(24, 24, 24, 0) 100%);
+
+}
+@media (min-width: 768px) {
+    .banner{
+        width: auto;
+        height: 100vh;
+        position: relative;
+        background-image:linear-gradient(to top, #000 0%, transparent 58%), url(../assets/homebb.png);
+        background-size:cover;
+        background-repeat:no-repeat;
+    
+    }
 }
 
 .banner .banner_home{
@@ -23,6 +33,7 @@
 }
 
 .banner .banner_home .text h2{
+    margin-top: 10vh;
     font-weight: 900;
     font-size: 72px;
     line-height: 1;
@@ -33,6 +44,30 @@
 .banner .banner_home .text p{
     font-size: 18px;
     line-height: 1.39;
+    font-weight: bold;
     color: #ffffff;
     max-width: 434px;
 }
+
+.banner .banner_home .text .btn{
+    margin-top: 14px;
+        width: 283px;
+        height: 54px;
+        color: #ffffff;
+        background: #036237;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 16px;
+        -webkit-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+    }

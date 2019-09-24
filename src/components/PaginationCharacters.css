@@ -1,0 +1,19 @@
+.pagination{
+    justify-content: center; 
+}
+.pagination .page-item.active .page-link {
+    z-index: 1;
+    color: #e5b312;
+    background-color: #036237;
+    border-color: #02502d;
+}
+.pagination .page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
